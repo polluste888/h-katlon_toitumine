@@ -191,7 +191,7 @@ export default function Game({ restartKey }: { restartKey: number }) {
               <span className="font-design-bold block text-2xl">
                 {penguins.length}
               </span>
-              erinevat tellimust
+              erinevat õpilast
             </div>
             <div className="absolute bottom-0 left-1/2 h-[90%] w-[70%] -translate-x-1/2">
               <Penguin data={penguins[0]} />
@@ -550,9 +550,14 @@ export default function Game({ restartKey }: { restartKey: number }) {
 
         <div className="grid gap-5 lg:grid-cols-[460px_1fr]">
           <aside className="overflow-hidden rounded-[36px] border border-[#4e8491]/15 bg-[#cfe0db] p-5 text-[#183d42] shadow-[0_20px_50px_rgba(24,61,66,.08)] sm:p-6 lg:min-h-[680px]">
-            <p className="font-design-semibold text-xs tracking-[.15em] text-[#386e79]">
-              TELLIMUS
-            </p>
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <p className="font-design-semibold text-xs tracking-[.15em] text-[#386e79]">
+                TELLIMUS
+              </p>
+              <span className="rounded-full bg-white/70 px-3 py-1 text-[10px] text-[#386e79]">
+                {current.focus}
+              </span>
+            </div>
             <h1 className="font-design-bold mt-3 text-3xl">{current.name}</h1>
             <div className="relative z-10 mt-5 rounded-[24px] bg-white p-5 text-[#183d42] shadow-xl">
               <p className="font-design-semibold leading-6">

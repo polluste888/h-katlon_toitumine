@@ -103,14 +103,14 @@ export default function Home({ setPage }: { setPage: (page: Page) => void }) {
                 <div className="absolute left-0 top-12 rounded-3xl bg-white p-4 shadow-lg">
                   <Icon name="clock" className="size-6 text-[#4e8491]" />
                   <p className="font-design-bold mt-2 text-lg text-[#183d42]">
-                    1 min
+                    30+ min
                   </p>
-                  <p className="text-xs text-[#6f817f]">ühe tellimuse jaoks</p>
+                  <p className="text-xs text-[#6f817f]">õpiteekond</p>
                 </div>
                 <Penguin data={penguins[0]} />
                 <div className="absolute bottom-8 right-0 rounded-3xl bg-[#183d42] p-4 text-white shadow-lg">
                   <Icon name="wallet" className="size-6 text-[#efc76d]" />
-                  <p className="font-design-bold mt-2 text-lg">3,70–4,60 €</p>
+                  <p className="font-design-bold mt-2 text-lg">3,70–6,60 €</p>
                   <p className="text-xs text-white/65">isiklik eelarve</p>
                 </div>
               </div>

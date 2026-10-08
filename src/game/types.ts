@@ -20,6 +20,7 @@ export type PenguinData = {
   name: string
   color: string
   accessory: "scarf" | "glasses" | "cap" | "bow" | "headphones" | "bag"
+  focus: string
   request: string
   wanted: FoodCategory[]
   note: string

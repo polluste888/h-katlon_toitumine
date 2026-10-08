@@ -163,7 +163,7 @@ export const foods: Food[] = [
   },
 ]
 
-const challengeTemplates: Omit<PenguinData, "name" | "color" | "accessory" | "budget">[] =
+const challengeTemplates: Omit<PenguinData, "name" | "color" | "accessory" | "budget" | "focus">[] =
   [
     {
       request: "Palun vali mulle köögivili ja midagi valgurikast.",
@@ -289,16 +289,105 @@ const studentProfiles: Pick<PenguinData, "name" | "color" | "accessory" | "budge
     { name: "Martin", color: "#547A91", accessory: "scarf", budget: 4.4 },
     { name: "Anni", color: "#C58C42", accessory: "bow", budget: 4.5 },
     { name: "Sander", color: "#7886B0", accessory: "cap", budget: 4.6 },
+    { name: "Emma", color: "#3F8E8C", accessory: "headphones", budget: 4.7 },
+    { name: "Markus", color: "#B85D5A", accessory: "bag", budget: 4.8 },
+    { name: "Nora", color: "#7D9B5B", accessory: "scarf", budget: 4.9 },
+    { name: "Aron", color: "#9B6B4F", accessory: "glasses", budget: 5.0 },
+    { name: "Säde", color: "#6B73A8", accessory: "cap", budget: 5.1 },
+    { name: "Robin", color: "#4A8070", accessory: "bow", budget: 5.2 },
+    { name: "Laura", color: "#B4697B", accessory: "headphones", budget: 5.3 },
+    { name: "Erik", color: "#677F98", accessory: "bag", budget: 5.4 },
+    { name: "Marta", color: "#A88747", accessory: "scarf", budget: 5.5 },
+    { name: "Karl", color: "#678E83", accessory: "glasses", budget: 5.6 },
+    { name: "Eliise", color: "#D07752", accessory: "cap", budget: 5.7 },
+    { name: "Henry", color: "#447885", accessory: "bow", budget: 5.8 },
+    { name: "Kadri", color: "#916A8E", accessory: "headphones", budget: 5.9 },
+    { name: "Oliver", color: "#719255", accessory: "bag", budget: 6.0 },
+    { name: "Grete", color: "#B37D4F", accessory: "scarf", budget: 6.1 },
+    { name: "Kaspar", color: "#5C6FA1", accessory: "glasses", budget: 6.2 },
+    { name: "Aino", color: "#BE6262", accessory: "cap", budget: 6.3 },
+    { name: "Joonas", color: "#408F81", accessory: "bow", budget: 6.4 },
+    { name: "Piret", color: "#967A4F", accessory: "headphones", budget: 6.5 },
+    { name: "Tõnis", color: "#687B8D", accessory: "bag", budget: 6.6 },
   ]
 
-export const penguins: PenguinData[] = studentProfiles.map(
-  (student, index) => ({
-    ...student,
-    ...challengeTemplates[index % challengeTemplates.length],
-  }),
-)
+const stageVariations = [
+  { focus: "Tasakaalustatud taldrik", requestAddition: "Tee valik mitmekesiseks.", note: "Värviline taldrik annab eri toitaineid." },
+  { focus: "Tasakaalustatud taldrik", requestAddition: "Mõtle, kuidas see eine kõhtu täidab.", note: "Terve puuvili pakub rohkem kiudaineid kui mahl." },
+  { focus: "Tasakaalustatud taldrik", requestAddition: "Vali midagi, mida sööd hea meelega.", note: "Erinevad toidugrupid toetavad keha eri viisidel." },
+  { focus: "Tasakaalustatud taldrik", requestAddition: "Vaata, et valikus oleks kaks eri toidugruppi.", note: "Teravili annab kehale igapäevast energiat." },
+  { focus: "Tasakaalustatud taldrik", requestAddition: "Lisa taldrikule midagi värsket.", note: "Puuvili ja valk moodustavad koos toitva eine." },
+  { focus: "Tasakaalustatud taldrik", requestAddition: "Jälgi, et kõik soovitud grupid oleks kaetud.", note: "Mitmekesisus aitab katta erinevaid toitainevajadusi." },
+  { focus: "Tasakaalustatud taldrik", requestAddition: "Eelista tervet toitu magusale joogile.", note: "Köögiviljad ja puuviljad annavad kiudaineid." },
+  { focus: "Tasakaalustatud taldrik", requestAddition: "Koosta eine, mis annab energiat pikaks päevaks.", note: "Täistera ja maitsestamata piimatoode sobivad hästi kokku." },
+  { focus: "Tasakaalustatud taldrik", requestAddition: "Vali tasakaal, mitte ainult üks lemmiktoit.", note: "Valgu- ja piimatooted annavad erinevaid toitaineid." },
+  { focus: "Tasakaalustatud taldrik", requestAddition: "Mõtle taldrikust kui tervikust.", note: "Köögivilja ja täistera kooslus lisab kiudaineid." },
+  { focus: "Eelarve ja hinnavõrdlus", requestAddition: "Võrdle hindu ja eelista soodsamat sobivat valikut.", note: "Odavam valik võib olla sama toitev." },
+  { focus: "Eelarve ja hinnavõrdlus", requestAddition: "Jäta eelarvesse ruumi ka puuviljale.", note: "Kõige kallim toode pole automaatselt parim." },
+  { focus: "Eelarve ja hinnavõrdlus", requestAddition: "Kontrolli hinda enne, kui taldriku täidad.", note: "Väiksem hinnavahe aitab kogu eine eelarves hoida." },
+  { focus: "Eelarve ja hinnavõrdlus", requestAddition: "Leia valik, mis täidab vajadused ja jääb limiiti.", note: "Võrdle taimse ja loomse valgu hinda." },
+  { focus: "Eelarve ja hinnavõrdlus", requestAddition: "Arvesta kogu taldriku maksumust.", note: "Soodne köögivili jätab rohkem raha põhitoidule." },
+  { focus: "Eelarve ja hinnavõrdlus", requestAddition: "Jaga raha kolme toidugrupi vahel.", note: "Planeeri portsjonid enne valiku tegemist." },
+  { focus: "Eelarve ja hinnavõrdlus", requestAddition: "Võrdle puuvilja ja valgu hinda.", note: "Taimsed valguallikad võivad olla hea säästlik valik." },
+  { focus: "Eelarve ja hinnavõrdlus", requestAddition: "Kasuta raha toidu, mitte limonaadi peale.", note: "Hind ja toiteväärtus tasub koos läbi mõelda." },
+  { focus: "Eelarve ja hinnavõrdlus", requestAddition: "Leia kaks sobivat toodet, mis mahuvad limiiti.", note: "Täisteratooted annavad sageli hea hinna eest kiudaineid." },
+  { focus: "Eelarve ja hinnavõrdlus", requestAddition: "Võrdle alternatiive, enne kui otsustad.", note: "Soodne valguallikas aitab eelarvet tasakaalus hoida." },
+  { focus: "Toidupüramiid ja kiirenergia", requestAddition: "Vali püramiidi põhjast sagedamini sobivaid toite.", note: "Täisteratooted ja köögiviljad sobivad menüüsse sageli." },
+  { focus: "Toidupüramiid ja kiirenergia", requestAddition: "Terve puuvili on parem igapäevane valik kui magus jook.", note: "Mahlas on vähem kiudaineid kui terves puuviljas." },
+  { focus: "Toidupüramiid ja kiirenergia", requestAddition: "Jäta kook harvaks, mitte põhitoidu asemele.", note: "Maiustused kuuluvad püramiidi tippu." },
+  { focus: "Toidupüramiid ja kiirenergia", requestAddition: "Energiajoogist ei saa vajalikku lõunasööki.", note: "Lapsed peaksid kofeiiniga energiajooke vältima." },
+  { focus: "Toidupüramiid ja kiirenergia", requestAddition: "Võrdle puuvilja ja kommi mõju täiskõhule.", note: "Kiudained aitavad kõhul kauem täis püsida." },
+  { focus: "Toidupüramiid ja kiirenergia", requestAddition: "Vali päris toit, mitte vaid kiire ergutus.", note: "Regulaarne eine toetab õppimist paremini kui kofeiin." },
+  { focus: "Toidupüramiid ja kiirenergia", requestAddition: "Limonaad ei asenda köögivilja ega puuvilja.", note: "Magus jook annab suhkrut, kuid vähe kasulikke toitaineid." },
+  { focus: "Toidupüramiid ja kiirenergia", requestAddition: "Friikartulid jäta harvemaks valikuks.", note: "Täisterad sobivad sagedamini kui tugevalt töödeldud näksid." },
+  { focus: "Toidupüramiid ja kiirenergia", requestAddition: "Ära aja segi kofeiini ja toidust saadavat energiat.", note: "Kasvav keha vajab und ja mitmekesist toitu." },
+  { focus: "Toidupüramiid ja kiirenergia", requestAddition: "Võrdle tervet einekomplekti püramiidi järgi.", note: "Tasakaalu loob eri toidugruppide kooslus." },
+] satisfies { focus: string; requestAddition: string; note: string }[]
 
-export const detectorRounds = [2, 5, 8]
+const usedFoodLists = new Set<string>()
+
+function addStageFoodOptions(availableFoodIds: string[], roundIndex: number) {
+  const options = [...availableFoodIds]
+  let offset = roundIndex * 3
+  const targetLength = Math.min(
+    availableFoodIds.length + 2 + Math.floor(roundIndex / 10),
+    foods.length,
+  )
+
+  while (true) {
+    while (options.length < targetLength) {
+      const candidate = foods[offset % foods.length].id
+      if (!options.includes(candidate)) options.push(candidate)
+      offset++
+    }
+
+    const signature = [...options].sort().join(",")
+    if (!usedFoodLists.has(signature)) {
+      usedFoodLists.add(signature)
+      return options
+    }
+
+    const nextCandidate = foods[offset % foods.length].id
+    if (!options.includes(nextCandidate)) options.push(nextCandidate)
+    offset++
+  }
+}
+
+export const penguins: PenguinData[] = studentProfiles.map((student, index) => {
+  const challenge = challengeTemplates[index % challengeTemplates.length]
+  const variation = stageVariations[index]
+
+  return {
+    ...student,
+    ...challenge,
+    focus: variation.focus,
+    request: `${challenge.request} ${variation.requestAddition}`,
+    note: variation.note,
+    availableFoodIds: addStageFoodOptions(challenge.availableFoodIds, index),
+  }
+})
+
+export const detectorRounds = [3, 8, 13, 18, 23, 28]
 
 export const detectorClaims = [
   {
@@ -321,5 +410,26 @@ export const detectorClaims = [
     correct: false,
     feedback:
       "Keha vajab ka rasvu. Eelistada tasub küllastumata rasvu, mida leidub näiteks kalas, pähklites ja seemnetes.",
+  },
+  {
+    statement:
+      "Gluteenivaba toode on alati tervislikum kui tavaline samalaadne toode.",
+    correct: false,
+    feedback:
+      "Gluteenivaba toit on vajalik tsöliaakia korral, kuid see ei tähenda automaatselt rohkem kiudaineid ega paremat toiteväärtust.",
+  },
+  {
+    statement:
+      "Taimsed valgud, näiteks oad, aitavad samuti keha kasvatada ja taastada.",
+    correct: true,
+    feedback:
+      "Oad ja teised kaunviljad annavad valku. Mitmekesine menüü aitab saada kätte kõik vajalikud aminohapped ja muud toitained.",
+  },
+  {
+    statement:
+      "Regulaarsed mitmekesised toidukorrad aitavad hoida energiat ja keskendumist.",
+    correct: true,
+    feedback:
+      "Sobiva rütmiga toidukorrad aitavad nälga ennetada ja toetavad õppimist. Vajadused on siiski inimestel erinevad.",
   },
 ]

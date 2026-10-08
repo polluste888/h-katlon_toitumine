@@ -258,13 +258,6 @@ export function Penguin({
               strokeWidth="4"
               strokeLinecap="round"
             />
-            <path
-              d="M108 132c7-8 17-8 24 0"
-              fill="none"
-              stroke="#102D31"
-              strokeWidth="4"
-              strokeLinecap="round"
-            />
             <path d="M151 102c0 8-5 12-8 12s-6-4-4-8l7-11Z" fill="#74B8D1" />
           </>
         )}
@@ -371,7 +364,7 @@ export function Penguin({
 export function FoodPyramid() {
   const levels = [
     {
-      label: "Maiustused ja näksid",
+      label: "Maiustused ja snäkid",
       note: "harva",
       width: "43%",
       color: "#d75f50",

@@ -17,7 +17,7 @@ export default function Guide({ setPage }: { setPage: (page: Page) => void }) {
     [
       "03",
       "Jälgi piire",
-      "Ühe tellimuse jaoks on 1 minut. Igal pingviinil on oma eelarve alates 3,70 eurost ning summa on alati ekraani ülaservas.",
+      "Iga pingviini toiduvalikuks on umbes 1 minut. Eelarved jäävad 3,70–6,60 euro vahele ja summa on alati ekraani ülaservas.",
     ],
     [
       "04",
@@ -27,7 +27,7 @@ export default function Guide({ setPage }: { setPage: (page: Page) => void }) {
     [
       "05",
       "Kontrolli väidet",
-      "Kolmel korral avaneb Valeinfo detektor. Vali, kas tervisliku toitumise väide on õige või vale, ja loe selgitust.",
+      "Kuuel korral avaneb Valeinfo detektor. Vali, kas tervisliku toitumise väide on õige või vale, ja loe selgitust.",
     ],
     [
       "06",
@@ -76,7 +76,7 @@ export default function Guide({ setPage }: { setPage: (page: Page) => void }) {
                     <Icon name="clock" /> 1 min
                   </span>
                   <span className="inline-flex items-center gap-2 rounded-full bg-[#fff3db] px-4 py-2 text-sm text-[#7c6328]">
-                    <Icon name="wallet" /> 3,70–4,60 €
+                    <Icon name="wallet" /> 3,70–6,60 €
                   </span>
                 </div>
               )}
