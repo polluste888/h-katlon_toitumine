@@ -1,0 +1,124 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Inter:Bold';
+  src: url('https://static.figma.com/font/Inter_1') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter:Medium';
+  src: url('https://static.figma.com/font/Inter_1') format('woff2');
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter:Regular';
+  src: url('https://static.figma.com/font/Inter_1') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter:Semi Bold';
+  src: url('https://static.figma.com/font/Inter_1') format('woff2');
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+:root {
+  font-family: 'Inter:Regular', Inter, sans-serif;
+  color: #183d42;
+  background: #f7f4eb;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible {
+  outline: 3px solid #d8a94d;
+  outline-offset: 3px;
+}
+
+.font-design-bold,
+h1,
+h2,
+h3 {
+  font-family: 'Inter:Bold', Inter, sans-serif;
+  font-weight: 700;
+}
+
+.font-design-medium {
+  font-family: 'Inter:Medium', Inter, sans-serif;
+  font-weight: 500;
+}
+
+.font-design-semibold,
+strong,
+b {
+  font-family: 'Inter:Semi Bold', Inter, sans-serif;
+  font-weight: 600;
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(24, 61, 66, .055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 61, 66, .055) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 92%);
+}
+
+.game-surface {
+  background-color: #e8f0ec;
+  background-image: radial-gradient(rgba(78, 132, 145, .16) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: .01ms !important;
+  }
+}
+
+@media (max-width: 767px) {
+  html,
+  body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+}

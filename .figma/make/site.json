@@ -1,0 +1,11 @@
+{
+  "title": "SööklaRändur",
+  "description": "Interactive educational game where students select healthy school meals within time and budget limits to learn balanced nutrition through engaging penguin characters.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
